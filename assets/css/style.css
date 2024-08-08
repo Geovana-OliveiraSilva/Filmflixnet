@@ -1,0 +1,235 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #141414;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+.logo_cabecalho img {
+    height: 40px;
+}
+
+.menu_cabecalho ul,
+.menu_config ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.menu_cabecalho ul li,
+.menu_config ul li {
+    margin-left: 20px;
+}
+
+.menu_cabecalho ul li a,
+.menu_config ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Menu toggle */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Seção Destaque */
+.secao_destaque {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.imagemDestaque_secaoDestaque img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.descricao_destaque {
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.navegacao_destaque a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.navegacao_destaque a.botao-assistir {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Seção Trailer do Dia */
+.secao_trailer_dia {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.trailer-container {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.trailer-container img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.play-trailer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Seções de Filmes */
+.secao_filmes,
+.progresso_filmes {
+    padding: 50px 0;
+}
+
+.lista_filmes {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+}
+
+.lista_filmes div {
+    flex: 0 0 auto;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.lista_filmes img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Seção Votação */
+.secao_votacao {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.opcoes-votacao button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #e50914;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Rodapé */
+.rodape {
+    background-color: #000000;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.rodape ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+.rodape ul li {
+    margin: 0 10px;
+}
+
+.rodape ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    /* Cabeçalho */
+    .cabecalho {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .menu_cabecalho {
+        order: 1;
+        flex-basis: 100%;
+    }
+
+    .menu_cabecalho ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .menu_cabecalho ul li {
+        margin: 10px 0;
+    }
+
+    .menu_config {
+        order: 2;
+    }
+
+    .menu-toggle {
+        display: block;
+        margin-right: 20px;
+    }
+
+    /* Seções de Filmes */
+    .lista_filmes {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .lista_filmes div {
+        margin: 10px;
+    }
+}
