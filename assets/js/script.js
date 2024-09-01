@@ -1,6 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     const carrosselSections = document.querySelectorAll('.secao_filmes, .progresso_filmes');
-    carrosselSections.forEach(section => {
+    const cabecalho = document.querySelector('.cabecalho');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menuCabecalho = document.querySelector('.menu_cabecalho ul');
+    const modal = document.getElementById('modal-pesquisa');
+    const pesquisarLink = document.getElementById('pesquisar-link');
+    const fecharModal = document.querySelector('.fechar');
+    const botaoPesquisa = document.getElementById('botao-pesquisa');
+
+    // Função para inicializar carrosséis
+    function initCarousel(section) {
         const lista = section.querySelector('.lista_filmes');
         const items = lista.querySelectorAll('div');
         let currentIndex = 0;
@@ -62,21 +71,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         section.appendChild(prevButton);
         section.appendChild(nextButton);
-    });
+    }
+
+    // Inicializar todos os carrosséis
+    carrosselSections.forEach(initCarousel);
 
     // Funcionalidade do botão de play do trailer
     const playTrailerButton = document.querySelector('.play-trailer');
 
     // Criar o modal
-    const modal = document.createElement('div');
-    modal.style.display = 'none';
-    modal.style.position = 'fixed';
-    modal.style.zIndex = '1000';
-    modal.style.left = '0';
-    modal.style.top = '0';
-    modal.style.width = '100%';
-    modal.style.height = '100%';
-    modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+    const trailerModal = document.createElement('div');
+    trailerModal.style.display = 'none';
+    trailerModal.style.position = 'fixed';
+    trailerModal.style.zIndex = '1000';
+    trailerModal.style.left = '0';
+    trailerModal.style.top = '0';
+    trailerModal.style.width = '100%';
+    trailerModal.style.height = '100%';
+    trailerModal.style.backgroundColor = 'rgba(0,0,0,0.8)';
 
     // Criar o contêiner do vídeo
     const videoContainer = document.createElement('div');
@@ -111,33 +123,33 @@ document.addEventListener('DOMContentLoaded', () => {
     videoContainer.appendChild(videoPlayer);
 
     // Adicionar contêiner ao modal
-    modal.appendChild(videoContainer);
+    trailerModal.appendChild(videoContainer);
 
     // Adicionar modal ao body
-    document.body.appendChild(modal);
+    document.body.appendChild(trailerModal);
 
     if (playTrailerButton) {
         playTrailerButton.addEventListener('click', () => {
             videoPlayer.src = 'assets/video/polaroid.mp4';
-            modal.style.display = 'block';
+            trailerModal.style.display = 'block';
             videoPlayer.play();
         });
     }
 
     // Função para fechar o modal
-    function closeModal() {
-        modal.style.display = 'none';
+    function closeTrailerModal() {
+        trailerModal.style.display = 'none';
         videoPlayer.pause();
         videoPlayer.currentTime = 0;
     }
 
     // Fechar o modal ao clicar no botão de fechar
-    closeButton.addEventListener('click', closeModal);
+    closeButton.addEventListener('click', closeTrailerModal);
 
     // Fechar o modal ao clicar fora do vídeo
-    modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            closeModal();
+    trailerModal.addEventListener('click', (event) => {
+        if (event.target === trailerModal) {
+            closeTrailerModal();
         }
     });
 
@@ -148,6 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert(`Você votou em ${e.target.textContent}!`);
         });
     });
+
     // Efeito hover nos itens do menu
     const menuItems = document.querySelectorAll('.menu_cabecalho a, .menu_config a');
     menuItems.forEach(item => {
@@ -167,5 +180,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 behavior: 'smooth'
             });
         });
+    });
+
+    // Mudança de cor do cabeçalho ao rolar
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            cabecalho.classList.add('scrolled');
+        } else {
+            cabecalho.classList.remove('scrolled');
+        }
+    });
+
+    // Toggle do menu mobile
+    menuToggle.addEventListener('click', () => {
+        menuCabecalho.classList.toggle('show');
+    });
+
+    // Funcionalidade do modal de pesquisa
+    pesquisarLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'block';
+    });
+
+    fecharModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+    botaoPesquisa.addEventListener('click', () => {
+        const termoPesquisa = document.getElementById('campo-pesquisa').value;
+        alert(`Pesquisando por: ${termoPesquisa}`);
+        modal.style.display = 'none';
     });
 });

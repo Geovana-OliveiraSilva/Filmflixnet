@@ -20,26 +20,26 @@
             <button class="menu-toggle" aria-label="Menu de Navegação">&#9776;</button>
             <!-- LISTA DE LINKS -->
             <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Séries</a></li>
-                <li><a href="#">Filmes</a></li>
-                <li><a href="#">Tendências</a></li>
-                <li><a href="#">Minha lista</a></li>
-                <li><a href="#">Descobrir</a></li>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#series">Séries</a></li>
+                <li><a href="#filmes">Filmes</a></li>
+                <li><a href="#tendencias">Tendências</a></li>
+                <li><a href="#minha-lista">Minha lista</a></li>
+                <li><a href="#descobrir">Descobrir</a></li>
             </ul>
         </nav>
         <div class="menu_config">
             <ul>
-                <li><a href="#">Pesquisar</a></li>
-                <li><a href="#">Perfil Infantil</a></li>
-                <li><a href="#">Notificações</a></li>
-                <li><img src="./assets/img/ProfileIMG.png" alt="Perfil img"></li>
+                <li><a href="#pesquisar" id="pesquisar-link">Pesquisar</a></li>
+                <li><a href="#perfil-infantil">Perfil Infantil</a></li>
+                <li><a href="#notificacoes">Notificações</a></li>
+                <li><img src="./assets/img/ProfileIMG.png" alt="Perfil img" id="perfil-img"></li>
             </ul>
         </div>
     </header>
     <main>
         <!-- SEÇÃO DESTAQUE -->
-        <section class="secao_destaque">
+        <section class="secao_destaque" id="inicio">
             <!-- IMAGEM DESTAQUE -->
             <figure class="imagemDestaque_secaoDestaque">
                 <img src="./assets/img/destaque.png" alt="imagem da serie">
@@ -71,7 +71,7 @@
         </section>
 
         <!-- SEÇÃO TENDÊNCIAS -->
-        <section class="secao_filmes">
+        <section class="secao_filmes" id="tendencias">
             <div class="container">
                 <h2>Tendências</h2>
                 <div class="lista_filmes">
@@ -140,14 +140,23 @@
     <footer class="rodape">
         <div class="container">
             <ul>
-                <li><a href="#">Sobre nós</a></li>
-                <li><a href="#">Centro de ajuda</a></li>
-                <li><a href="#">Termos de uso</a></li>
-                <li><a href="#">Privacidade</a></li>
+                <li><a href="#sobre">Sobre nós</a></li>
+                <li><a href="#ajuda">Centro de ajuda</a></li>
+                <li><a href="#termos">Termos de uso</a></li>
+                <li><a href="#privacidade">Privacidade</a></li>
             </ul>
             <p>&copy; 2024 Filmflixnet. Todos os direitos reservados.</p>
         </div>
     </footer>
+    <!-- Modal de pesquisa -->
+    <div id="modal-pesquisa" class="modal">
+        <div class="modal-content">
+            <span class="fechar">&times;</span>
+            <h2>Pesquisar</h2>
+            <input type="text" id="campo-pesquisa" placeholder="Digite sua pesquisa...">
+            <button id="botao-pesquisa">Buscar</button>
+        </div>
+    </div>
+    <script src="./assets/js/script.js"></script>
 </body>
-<script src="./assets/js/script.js"></script>
 </html>
